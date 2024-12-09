@@ -1,11 +1,7 @@
-import "./App.css";
+import Body from "./Components/Body";
 
 function App() {
-  return (
-    <div>
-      <h1>Jai Sai Master Jai Bapuji Maharaj</h1>
-    </div>
-  );
+  return <Body />;
 }
 
 export default App;
