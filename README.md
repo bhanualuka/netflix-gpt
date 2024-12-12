@@ -1,4 +1,5 @@
 # netflix-gpt
+
 - create react app
 - Configured TailwindCss
 - Header
@@ -17,6 +18,16 @@
 - BugFix: Sign up user displayName
 - BugFix: if the user in not logged in Redirect browse page to Login page and vice-versa
 - Unsubscribed to the onAuthStateChanged callback (When the component unmounts)
+- created assets folder for static files and constants folder to reuse the data in every component
+- Registered TMDB API && Created an app and got access token
+- Fetched Data From TMDB "Now Playing movies list" API
+- created movieSlice in our app store
+- added Fetched Data("now plaing movies list) to our app store
+- custom Hooks for movie api and movie trialer api
+- updated Store with movies Trialer data
+- Planned for MAinCoantiner and Secondaray conatiner
+- Embedded the yoututube video and make it autoplay and mute
+- Tailwind Classes to make the Conatiner like netflix
 
 # Features
 

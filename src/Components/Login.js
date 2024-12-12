@@ -35,7 +35,6 @@ const Login = () => {
     setErrorEmail(emailverify);
     setErrorPassword(passwordverify);
     setErrorUserName(nameverify);
-    console.log("jai Sai master");
     if (emailverify || passwordverify) return;
 
     if (!isSignInForm) {
@@ -71,7 +70,6 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode + errorMessage);
         });
     } else {
       // Sign In Logic
@@ -87,7 +85,6 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode + errorMessage);
         });
     }
   };
