@@ -5,7 +5,7 @@ export const EmailValidate = (email) => {
 
   if (!checkEmail) return "Email ID is Not Validate";
   else {
-    return null;r
+    return null;
   }
 };
 

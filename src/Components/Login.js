@@ -5,12 +5,24 @@ import {
   PasswordValidate,
   UsernameValidate,
 } from "../utils/checkValidate";
+import { auth } from "../utils/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+// import { use } from "react";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/reduxtoolkit/slices/userSlice";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
   const [errorEmail, setErrorEmail] = useState(null);
   const [errorPassword, setErrorPassword] = useState(null);
   const [errorUserName, setErrorUserName] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const dispatch = useDispatch();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -19,12 +31,65 @@ const Login = () => {
   const handleValidate = () => {
     const emailverify = EmailValidate(email.current.value);
     const passwordverify = PasswordValidate(password.current.value);
-    const nameverify = UsernameValidate(name.current.value);
+    const nameverify = !isSignInForm && UsernameValidate(name.current.value);
     setErrorEmail(emailverify);
     setErrorPassword(passwordverify);
     setErrorUserName(nameverify);
-
     console.log("jai Sai master");
+    if (emailverify || passwordverify) return;
+
+    if (!isSignInForm) {
+      // Sign Up Logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // User Signed up
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: "https://avatars.githubusercontent.com/u/143590098?v=4",
+          })
+            .then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode + errorMessage);
+        });
+    } else {
+      // Sign In Logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Uer Signed in
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode + errorMessage);
+        });
+    }
   };
 
   const handleSignForm = () => {
@@ -95,6 +160,7 @@ const Login = () => {
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
+        <p className="font-bold text-red-900">{errorMessage}</p>
         <p className="cursor-pointer " onClick={handleSignForm}>
           {isSignInForm
             ? "New to Netflix ? Sign up Now "
