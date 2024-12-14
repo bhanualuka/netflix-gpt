@@ -28,6 +28,8 @@
 - Planned for MAinCoantiner and Secondaray conatiner
 - Embedded the yoututube video and make it autoplay and mute
 - Tailwind Classes to make the Conatiner like netflix
+- Secondary Container build
+- Created Suggestion Movie List
 
 # Features
 

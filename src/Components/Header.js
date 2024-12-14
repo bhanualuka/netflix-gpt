@@ -67,7 +67,7 @@ const Header = () => {
       "
         >
           <img
-            className="w-12 h-8 mr-3 mt-8 rounded-lg "
+            className="w-12 h-8 mr-3 mt-7 rounded-lg "
             src={netflixuserlogo}
             alt="usericon"
           />
@@ -86,7 +86,7 @@ const Header = () => {
           )} */}
           <button
             onClick={handleSignOut}
-            className=" bg-red-600 rounded-md mt-7  w-24 h-9 border border-red-600 text-white font-bold"
+            className=" bg-red-600 rounded-md mt-6  w-24 h-9 border border-red-600 text-white font-bold"
           >
             SignOut
           </button>

@@ -9,3 +9,5 @@ export const API_OPTIONS = {
 
 export const PLAY_BUTTON =
   "https://i.pinimg.com/474x/3c/9b/eb/3c9beb192aabdfef6fdd0a9b47c89541.jpg";
+
+export const POSTER_URL = "https://image.tmdb.org/t/p/w200";
