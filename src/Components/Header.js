@@ -6,6 +6,9 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUSer } from "../utils/reduxtoolkit/slices/userSlice";
+import { addGptSearch } from "../utils/reduxtoolkit/slices/GptSlice";
+import { SUPPORT_LANG } from "../utils/constants";
+import { addChangeName } from "../utils/reduxtoolkit/slices/configLang";
 
 const Header = () => {
   const [isAuthChecked, setIsAuthChecked] = useState(false);
@@ -13,6 +16,9 @@ const Header = () => {
 
   const user = useSelector((store) => store.user);
 
+  const toogelGptSearch = useSelector(
+    (store) => store.gptSearch.toogoleGptSearch
+  );
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
@@ -24,6 +30,11 @@ const Header = () => {
         // An error happened.
         navigate("/error");
       });
+  };
+
+  // mutlilanguage  handling
+  const handleLang = (e) => {
+    dispatch(addChangeName(e.target.value));
   };
 
   useEffect(() => {
@@ -66,6 +77,27 @@ const Header = () => {
           className="flex  mr-6
       "
         >
+          {toogelGptSearch && (
+            <select
+              className="p-2 m-6 rounded-md text-white  bg-gray-900"
+              onChange={(e) => {
+                handleLang(e);
+              }}
+            >
+              {SUPPORT_LANG.map((lang) => (
+                <option value={lang.identifier}>{lang.name}</option>
+              ))}
+            </select>
+          )}
+
+          <button
+            onClick={() => {
+              dispatch(addGptSearch());
+            }}
+            className="text-white  bg-purple-800  w-28 px-5  h-10 mt-6 mr-8 rounded-lg "
+          >
+            {toogelGptSearch ? "Home" : "GptSearch"}
+          </button>
           <img
             className="w-12 h-8 mr-3 mt-7 rounded-lg "
             src={netflixuserlogo}

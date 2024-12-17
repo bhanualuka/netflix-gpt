@@ -3,11 +3,9 @@ import MovieCard from "./MovieCard";
 import "./Hide-Scroll-Bar.css";
 
 const MoviesList = ({ title, movies }) => {
-  console.log(movies);
-
   return (
     <div className="p-6">
-      <div className="">
+      <div>
         <h1 className="py-4 text-2xl text-white"> {title} </h1>
         <div className="flex overflow-x-scroll hide-scrollbar">
           <div className="flex">

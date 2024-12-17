@@ -30,11 +30,16 @@
 - Tailwind Classes to make the Conatiner like netflix
 - Secondary Container build
 - Created Suggestion Movie List
-- Created  Popular, TopRated , UpComing movie list.
+- Created Popular, TopRated , UpComing movie list.
 - Created Movie Cards For all movie list
-- Founded TMDB CDN URL  To fetch posters
-- Created CustomHooks(Maintaing all cutsom hooks) for Different Movie List categories.
+- Founded TMDB CDN URL To fetch posters
+- Created CustomHooks(Maintaing all cutsom hooks) for Different Movie List(API's) categories.
 
+- Intergration of Gpt:
+  - created GptSearch Page
+  - created GptSearch Bar
+  - _Implementade Multilanguage in GptSearchPage_
+  - created Store for Multilanguage
 
 # Features
 

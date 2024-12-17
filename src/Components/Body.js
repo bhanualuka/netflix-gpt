@@ -21,7 +21,6 @@ const Body = () => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         const { uid, email, displayName, photoURL } = user;
-        console.log(uid, email, displayName);
         dispatch(
           addUser({
             uid: uid,

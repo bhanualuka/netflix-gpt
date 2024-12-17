@@ -4,7 +4,6 @@ import { useMovieTrialer } from "../../CustomHooks/useMovieTrailer";
 const VideoBackground = ({ movieId }) => {
   const mTrailer = useSelector((store) => store.movies.movieTrailer);
 
-  // console.log(mTrailer?.key);
   useMovieTrialer(movieId);
 
   return (
